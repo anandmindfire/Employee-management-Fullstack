@@ -18,24 +18,39 @@ export const loginController = async (req, res) => {
     const user = await userModel.findOne({ username });
 
     if (!user) {
-      return res.status(401).json({ error: 'Authentication failed' });
+      return res.status(404).json({ error: 'Authentication failed' });
     }
 
     const passwordMatch = await comparePasswords(password, user.password);
 
     if (!passwordMatch) {
-      return res.status(401).json({ error: 'Authentication failed' });
+      return res.status(400).json({ error: 'Authentication failed' });
     }
 
     // Check the user's role
     if (user.role === 'admin') {
+      user.loginCount += 1;
+      // Update lastLogin time
+      user.lastLogin = new Date();
+
+       // Save the updated user document
+       await user.save();
+
       // Admin login, generate admin token
       const adminToken = generateToken(user._id);
-      return res.status(200).json({ message: 'Admin logged in successfully', token: adminToken, role: 'admin', user:user.username });
+      return res.status(200).json({ message: 'Admin logged in successfully', token: adminToken, role: 'admin', user });
     } else if (user.role === 'user') {
+      // User login, Count
+      user.loginCount += 1;
+      // Update lastLogin time
+      user.lastLogin = new Date();
+
+       // Save the updated user document
+       await user.save();
+
       // User login, generate user token
       const userToken = generateToken(user._id);
-      return res.status(200).json({ message: 'User logged in successfully', token: userToken, role: 'user',user:user.username });
+      return res.status(200).json({ message: 'User logged in successfully', token: userToken, role: 'user',user });
     } else {
       // Unexpected role
       return res.status(401).json({ error: 'Authentication failed' });

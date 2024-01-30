@@ -2,7 +2,7 @@ import AdminLayout from "./components/Layout/AdminLayout";
 import UserLayout from "./components/Layout/UserLayout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import Course from "./pages/Course";
+import CreateUser from "./pages/CreateUser";
 import Profile from "./pages/Profile";
 import Login from "./pages/Login";
 import UserDashboard from "./pages/User/UserDashboard";
@@ -49,7 +49,7 @@ function App() {
             <AdminLayout>
               <Routes>
                 <Route path="/dashboard" element={<Dashboard />} />
-                <Route path="/course" element={<Course />} />
+                <Route path="/create" element={<CreateUser />} />
                 <Route path="/profile" element={<Profile />} />
               </Routes>
             </AdminLayout>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ApexCharts from 'react-apexcharts';
 
-const PieChart = () => {
+const PieChart = ({ userData }) => {
   const [chartData, setChartData] = useState({
     series: [10, 5],
     labels: ['Total Users', 'Active Users'],
@@ -23,7 +23,7 @@ const PieChart = () => {
   const chartOptions = {
     series: chartData.series,
     chart: {
-      width: 380,
+      width: 350,
       type: 'pie',
     },
     labels: chartData.labels,
@@ -42,7 +42,7 @@ const PieChart = () => {
 
   return (
     <div id="piechart">
-      <ApexCharts options={chartOptions} series={chartData.series} type="pie" width={380} />
+      <ApexCharts options={chartOptions} series={chartData.series} type="pie" width={360} />
     </div>
   );
 };

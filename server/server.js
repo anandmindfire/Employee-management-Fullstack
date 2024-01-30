@@ -26,9 +26,7 @@ app.use("/api/v1/table", tableRoutes);
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/protected", protectedRoutes);
 
-app.get("/", (req, res) => {
-  res.send("<h1>Welcome to employee-API</h1>");
-});
+
 
 const specs = swaggerJSDoc(swaggerOptions);
 app.use("/api/v1-docs", SwaggerUiOptions.serve, SwaggerUiOptions.setup(specs));

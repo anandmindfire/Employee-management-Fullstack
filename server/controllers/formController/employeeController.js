@@ -17,7 +17,7 @@ export const addnewEmployee = async (req, res) => {
     const createdByUser = req.user;
 
     if (existingUser) {
-      return res.status(200).send({
+      return res.status(400).send({
         success: false,
         message: 'Employee already added. Please add a different employee.',
       });

@@ -2,28 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ApexCharts from 'react-apexcharts';
 
-const EmployeeChart = () => {
-  const [employeeData, setEmployeeData] = useState([]);
-
-  useEffect(() => {
-    // Fetch employee data from your API with JWT token
-    const jwtToken = localStorage.getItem('token');  // Assuming you stored the JWT token in localStorage
-
-    axios.get('http://localhost:5000/api/v1/table/employees?page=1&limit=7&sortBy=fullname&order=asc', {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-    })
-      .then(response => {
-        // Assuming your API response has a data field containing employee details
-        setEmployeeData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching employee data:', error);
-      });
-  }, []);
-
-  console.log(employeeData)
+const EmployeeChart = ({ employeeData ,userData}) => {
   //console.log(employeeData.TotalEmployee)
   // Prepare data for chart
   //const categories = employeeData.map(employees => employees.fullname);
@@ -47,7 +26,7 @@ const EmployeeChart = () => {
 
   return (
     <div id="barChart">
-      <ApexCharts options={chartOptions} series={chartOptions.series} type="bar" height={350} />
+      <ApexCharts options={chartOptions} series={chartOptions.series} type="bar" height={300} />
     </div>
   );
 };

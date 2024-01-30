@@ -2,30 +2,29 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ApexCharts from 'react-apexcharts';
 
-const EmployeeRatio = () => {
-  const [RatioData, setRatioData] = useState({
-    series: [10, 5],
-    labels: ['Total Employees', 'Total Users'],
-  });
+const EmployeeRatio =({ employeeData ,userData })=> {
+  const [TotalempData, setTotalempData] = useState(0);
+  const [TotaluserData, setTotaluserData] = useState(0);
 
-//   useEffect(() => {
-//     // Fetch chart data from your API
-//     axios.get('YOUR_API_ENDPOINT')  // Replace with your API endpoint
-//       .then(response => {
-//         // Assuming your API response has a data field containing chart details
-//         setChartData(response.data);
-//       })
-//       .catch(error => {
-//         console.error('Error fetching chart data:', error);
-//       });
-//   }, []);
-
+  // console.log(userData);
+  useEffect(() => {
+    // Check if employeeData and userData are not undefined
+    if (employeeData && userData) {
+      // Calculate total employee data
+      const totalEmployee = employeeData.TotalEmployee || 0;
+      setTotalempData(totalEmployee);
+  
+      // Calculate total user data
+      const totalUser = userData.length || 0;
+      setTotaluserData(totalUser);
+    }
+  }, [employeeData, userData]);
 var ChartOptions = {
-    series: RatioData.series,
+    series: [TotalempData, TotaluserData],
     chart: {
       type: 'donut',
     },
-    labels: RatioData.labels, // Add labels here
+    labels:  ['Total Employees', 'Total Users'],
     responsive: [{
       breakpoint: 480,
       options: {
@@ -41,7 +40,7 @@ var ChartOptions = {
   
   return (
     <div id="ratiopiechart">
-      <ApexCharts options={ChartOptions} series={RatioData.series} type="donut" width={380} />
+      <ApexCharts options={ChartOptions} series={ChartOptions.series} type="donut" width={380} />
     </div>
   );
 };

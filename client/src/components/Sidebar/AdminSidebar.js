@@ -14,7 +14,7 @@ const AdminSidebar = () => {
 
   const Menus = [
     { title: 'Dashboard', path: '/admin/dashboard', src: <AiFillPieChart /> },
-    { title: 'Course', path: '/admin/course', src: <SiFuturelearn /> },
+    { title: 'Create User', path: '/admin/create', src: <SiFuturelearn /> },
     { title: 'Profile', path: '/admin/profile', src: <CgProfile /> },
     /*
     { title: 'Signin', path: '/login', src: <SiOpenaccess />, },

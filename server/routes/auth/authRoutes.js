@@ -2,11 +2,13 @@
 import express from "express";
 import { registerController } from "../../controllers/authController/authRegistration.js";
 import { loginController } from "../../controllers/authController/authLogin.js";
+import { verifyToken } from "../../middleware/authMiddleware.js";
 
 import {
   getUsers,
   updateUser,
   deleteUser,
+  getUserById
 } from "../../controllers/authController/UserController.js";
 
 // router object
@@ -85,12 +87,13 @@ router.post("/register", registerController);
 // Admin Login route
 router.post("/login", loginController);
 
-router.get("/users", getUsers);
+router.get("/users", verifyToken,getUsers);
 
+router.get("/users/:id", verifyToken,getUserById);
 // PUT request to update user information
-router.put("/users/:id", updateUser);
+router.put("/users/:id", verifyToken,updateUser);
 
 // DELETE request to delete a user
-router.delete("/users/:id", deleteUser);
+router.delete("/users/:id",verifyToken, deleteUser);
 
 export default router;

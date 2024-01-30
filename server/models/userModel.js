@@ -18,6 +18,13 @@ const userSchema = new mongoose.Schema({
       type: String,
       enum: ["user", "admin"],
       default: "user"
-    }
+    },
+    loginCount: {
+      type: Number,
+      default: 0,
+    },
+    lastLogin: {
+      type: Date,
+    },
  });
  export default mongoose.model("user", userSchema);
