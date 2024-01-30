@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../Navbar'
+import Navbar from '../Navbar/Navbar'
 import AdminSidebar from '../Sidebar/AdminSidebar'
 
 const AdminLayout = ({ children }) => {

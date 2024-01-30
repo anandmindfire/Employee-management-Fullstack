@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import EmployeeChart from "../components/DashboardComponent/EmployeeChart";
-import PieChart from "../components/DashboardComponent/PieChart";
-import EmployeeRatio from "../components/DashboardComponent/EmployeeRatioChart";
-import RadialBarChart from "../components/DashboardComponent/TotalEmployeeChart";
-import { fetchEmployeeData } from "../API/GetEmployees";
-import { GetUsers } from "../API/GetUsers";
+import EmployeeChart from "../../components/DashboardChart/EmployeeChart";
+import PieChart from "../../components/DashboardChart/PieChart";
+import EmployeeRatio from "../../components/DashboardChart/EmployeeRatioChart";
+import RadialBarChart from "../../components/DashboardChart/TotalEmployeeChart";
+import { fetchEmployeeData } from "../../API/GetEmployees";
+import { GetUsers } from "../../API/GetUsers";
 
 const Dashboard = () => {
   const [employeeData, setEmployeeData] = useState([]);

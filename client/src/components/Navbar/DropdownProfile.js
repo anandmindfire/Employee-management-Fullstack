@@ -1,6 +1,6 @@
 // DropdownProfile.js
 import React, { useState } from 'react';
-import Toggle from './ThemeToggle';
+import Toggle from '../Theme/ThemeToggle';
 import { useNavigate } from 'react-router-dom';
 const DropdownProfile = () => {
   const [isOpen, setDropdownOpen] = useState(false);

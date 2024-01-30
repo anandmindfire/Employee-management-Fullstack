@@ -1,6 +1,6 @@
 import React from "react";
-import UserForm from "../components/CreateUserForm/userForm";
-import AllUsers from "../components/CreateUserForm/GetallUsers";
+import UserForm from "../../components/CreateUserForm/userForm";
+import AllUsers from "../../components/CreateUserForm/GetallUsers";
 
 const CreateUser = () => {
   

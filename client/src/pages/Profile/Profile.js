@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { GetProfile } from '../../API/GetProfile';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -14,7 +14,7 @@ const Profile = () => {
 
     // Check if user is authenticated
     if (!currentUser) {
-      // Redirect to login page or handle unauthenticated user
+      
       console.error('User not authenticated');
       return;
     }
@@ -23,14 +23,9 @@ const Profile = () => {
     const fetchUserProfile = async () => {
       try {
         const jwtToken = localStorage.getItem('token');
+        const userProfile = await GetProfile(currentUser._id, jwtToken);
+        setUser(userProfile);
 
-        const response = await axios.get(`http://localhost:5000/api/v1/auth/users/${currentUser._id}`, {
-          headers: {
-            Authorization: `Bearer ${jwtToken}`,
-          },
-        });
-
-        setUser(response.data.user);
       } catch (error) {
         console.error('Error fetching user profile:', error);
       } finally {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { PostLogin } from "../API/PostLogin";
+import { PostLogin } from "../../API/PostLogin";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

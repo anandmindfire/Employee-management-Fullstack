@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import { ThemeProvider } from './components/ThemeContext'
-import Background from './components/Background'
+import { ThemeProvider } from './components/Theme/ThemeContext'
+import Background from './components/Background/Background'
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
