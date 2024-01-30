@@ -1,10 +1,26 @@
-// DropdownProfile.js
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import Toggle from '../Theme/ThemeToggle';
 import { useNavigate } from 'react-router-dom';
+
 const DropdownProfile = () => {
   const [isOpen, setDropdownOpen] = useState(false);
+  const [userName, setUserNmae] = useState(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Retrieve user information from local storage
+    const storedUser = localStorage.getItem('user');
+    const currentUser = storedUser ? JSON.parse(storedUser) : null;
+    setUserNmae(currentUser.username)
+    console.log(currentUser);
+
+    // Check if user is authenticated
+    if (!currentUser) {
+      
+      console.error('User not authenticated');
+      return;
+    }
+  }, []);
 
   const toggleDropdown = () => {
     setDropdownOpen(!isOpen);
@@ -37,7 +53,7 @@ const DropdownProfile = () => {
             />
           </div>
           <div className="font-semibold dark:text-white text-gray-900 text-lg">
-            <div className="cursor-pointer">Anand</div>
+            <div className="cursor-pointer">{userName}</div>
           </div>
         </div>
         {isOpen && (

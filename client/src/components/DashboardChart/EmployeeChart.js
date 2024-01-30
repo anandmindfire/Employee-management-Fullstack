@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import ApexCharts from 'react-apexcharts';
 
 const EmployeeChart = ({ employeeData ,userData}) => {
